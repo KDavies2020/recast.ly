@@ -7,13 +7,14 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      videos: exampleVideoData, //one for all of our videos && one for first video
       current: exampleVideoData[0]
     };
   }
 
-  onTitleClick() {
+  onTitleClick(video) {
     this.setState({
-      current: props.video
+      current: video
     });
   }
 
@@ -30,7 +31,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.current}/>
           </div>
           <div className="col-md-5">
-            <VideoList onClick={this.onTitleClick.bind(this)} videos={exampleVideoData}/>
+            <VideoList onTitleClick={this.onTitleClick.bind(this)} videos={exampleVideoData}/>
           </div>
         </div>
       </div>
