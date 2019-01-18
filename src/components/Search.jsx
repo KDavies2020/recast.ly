@@ -1,6 +1,19 @@
-var Search = () => (
+var Search = (props) => (
   <div className="search-bar form-inline">
-    <input className="form-control" type="text" />
+    <input className="form-control" type="text" onChange={
+      event =>
+      props.searchYouTube(
+        {
+          query: event.target.value,
+          max: 5,
+          key: props.APIKey
+        }, data => props.state(
+          {
+            current: data[0],
+            videos: data
+          }
+          ))
+    }/>
     <button className="btn hidden-sm-down">
       <span className="glyphicon glyphicon-search"></span>
     </button>
